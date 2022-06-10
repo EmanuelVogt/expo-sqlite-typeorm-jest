@@ -1,10 +1,20 @@
 {
   "expo": {
+    "packagerOpts": {
+      "sourceExts": [
+        "js",
+        "jsx",
+        "ts",
+        "tsx"
+      ],
+      "transformer": "node_modules/react-native-typescript-transformer/index.js"
+    },
     "name": "expo-sqlite-typeorm-jest",
     "slug": "expo-sqlite-typeorm-jest",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
+    "version": "0.1.0",
+    "platforms": [
+      "ios",
+      "android"
     ]
   }
 }
