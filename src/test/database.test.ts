@@ -1,5 +1,4 @@
 import { DatabaseProvider } from "../database";
-import "reflect-metadata";
 
 describe("database", () => {
   let service = new DatabaseProvider();
@@ -10,5 +9,9 @@ describe("database", () => {
 
   test("connection", () => {
     expect(service.dataSource?.isInitialized).toBe(true);
+  });
+
+  afterEach(async () => {
+    await service.closeDatabase();
   });
 });

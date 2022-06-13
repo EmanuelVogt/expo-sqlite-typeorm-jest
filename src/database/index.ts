@@ -17,4 +17,8 @@ export class DatabaseProvider {
 
     this.dataSource = await this.dataSource.initialize();
   }
+
+  public async closeDatabase() {
+    this.dataSource?.destroy();
+  }
 }
