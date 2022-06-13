@@ -7,6 +7,10 @@ export class DatabaseProvider {
   public dataSource: DataSource | undefined;
 
   public async initDatabase() {
+    if (this.dataSource?.isInitialized) {
+      await this.dataSource.destroy();
+    }
+
     this.dataSource = new DataSource({
       database: "test",
       name: ":memory:",
@@ -18,7 +22,12 @@ export class DatabaseProvider {
     this.dataSource = await this.dataSource.initialize();
   }
 
-  public async closeDatabase() {
-    this.dataSource?.destroy();
+  public async erase() {
+    if (this.dataSource?.isInitialized) {
+      await this.dataSource?.destroy();
+      return this.dataSource?.isInitialized;
+    }
+
+    return null;
   }
 }
