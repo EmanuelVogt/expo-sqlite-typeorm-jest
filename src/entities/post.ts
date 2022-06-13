@@ -5,7 +5,7 @@ import {
   ManyToMany,
   JoinTable,
   ManyToOne,
-} from "typeorm/browser";
+} from "typeorm";
 import { Category } from "./category";
 import { Author } from "./author";
 

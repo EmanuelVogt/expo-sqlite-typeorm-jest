@@ -1,18 +1,20 @@
-import { Author } from "entities/author";
-import { Category } from "entities/category";
-import { Post } from "entities/post";
+import { Author } from "../entities/author";
+import { Category } from "../entities/category";
+import { Post } from "../entities/post";
 import { DataSource } from "typeorm";
 
-export default class DatabaseProvider {
-  private dataSource = new DataSource({
-    database: "test",
-    driver: require("expo-sqlite"),
-    entities: [Category, Author, Post],
-    synchronize: true,
-    type: "expo",
-  });
+export class DatabaseProvider {
+  public dataSource: DataSource | undefined;
 
   public async initDatabase() {
-    this.dataSource.initialize();
+    this.dataSource = new DataSource({
+      database: "test",
+      name: ":memory:",
+      entities: [Category, Author, Post],
+      synchronize: true,
+      type: "sqlite",
+    });
+
+    this.dataSource = await this.dataSource.initialize();
   }
 }
