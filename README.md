@@ -9,7 +9,7 @@ RESULT: The newest typeorm version really doesn't work with expo-sqlite. The sol
 
 - [x] Db connection tests
 - [x] Db crud operations tests 
-- [x] Simple user interface
+- [x] User interface is not the focusing
 
 ### 🛠 Technologies
 
