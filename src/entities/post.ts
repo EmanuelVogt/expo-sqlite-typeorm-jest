@@ -5,12 +5,13 @@ import {
   ManyToMany,
   JoinTable,
   ManyToOne,
+  BaseEntity,
 } from "typeorm";
 import { Category } from "./category";
 import { Author } from "./author";
 
 @Entity("post")
-export class Post {
+export class Post extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 

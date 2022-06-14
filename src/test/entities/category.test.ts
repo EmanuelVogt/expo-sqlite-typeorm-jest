@@ -1,7 +1,7 @@
 import { DatabaseProvider } from "../../database";
 import { Category } from "../../entities/category";
 
-describe("AuthorEntity", () => {
+describe("Category Entity", () => {
   let dbProvider: DatabaseProvider;
 
   beforeEach(async () => {

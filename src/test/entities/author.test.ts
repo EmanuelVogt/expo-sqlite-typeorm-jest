@@ -4,9 +4,13 @@ import { Author } from "../../entities/author";
 describe("AuthorEntity", () => {
   let dbProvider: DatabaseProvider;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     dbProvider = new DatabaseProvider();
     await dbProvider.initDatabase();
+  });
+
+  afterEach(async () => {
+    await dbProvider.erase();
   });
 
   test("get author", async () => {
@@ -39,11 +43,12 @@ describe("AuthorEntity", () => {
   });
 
   test("delete author", async () => {
-    expect(await Author.delete(1)).toEqual({ affected: 1, raw: [] });
-  });
+    await Author.create({
+      id: 2,
+      name: "Nicolas Tesla",
+    }).save();
 
-  afterAll(async () => {
-    await dbProvider.erase();
+    expect(await Author.delete(2)).toEqual({ affected: 1, raw: [] });
   });
 
   test("update author", async () => {
